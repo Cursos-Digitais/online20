@@ -82,47 +82,43 @@ function animateCounters() {
 document.addEventListener('DOMContentLoaded', animateCounters);
 
 // ============================================
-// 4. FAQ ACCORDION
+// FAQ ACCORDION - SIMPLES
 // ============================================
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.faq-question').forEach(btn => {
-        btn.addEventListener('click', function() {
+document.addEventListener('DOMContentLoaded', function() {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+            const answer = this.nextElementSibling;
             const isActive = this.classList.contains('active');
+            
+            // Fecha todos
             document.querySelectorAll('.faq-question').forEach(q => {
                 q.classList.remove('active');
-                q.nextElementSibling?.classList.remove('open');
+                q.nextElementSibling.style.display = 'none';
             });
+            
+            // Abre o atual se não estava ativo
             if (!isActive) {
                 this.classList.add('active');
-                this.nextElementSibling?.classList.add('open');
+                answer.style.display = 'block';
             }
         });
     });
     
-    const firstFaq = document.querySelector('.faq-question');
-    if (firstFaq) {
-        firstFaq.classList.add('active');
-        firstFaq.nextElementSibling?.classList.add('open');
+    // Abre o primeiro por padrão
+    const firstQuestion = document.querySelector('.faq-question');
+    if (firstQuestion) {
+        firstQuestion.classList.add('active');
+        firstQuestion.nextElementSibling.style.display = 'block';
     }
 });
 
 // ============================================
-// 5. VENDAS RECENTES (ROTATIVO)
+// WHATSAPP TRACKING (OPCIONAL)
 // ============================================
-if (document.querySelector('.sales-list')) {
-    setInterval(() => {
-        const list = document.querySelector('.sales-list');
-        if (list?.children.length > 1) {
-            list.appendChild(list.children[0]);
-        }
-    }, 10000);
-}
-
-// ============================================
-// 6. WHATSAPP/EMAIL TRACKING
-// ============================================
-document.querySelectorAll('a[href*="whatsapp"], a[href^="mailto:"]').forEach(link => {
-    link.addEventListener('click', () => {
+document.querySelectorAll('a[href*="whatsapp"]').forEach(link => {
+    link.addEventListener('click', function() {
         if (typeof fbq !== 'undefined') fbq('track', 'Contact');
     });
 });
