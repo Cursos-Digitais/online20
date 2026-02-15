@@ -321,7 +321,7 @@
         </div>
     </section>
 
-    <!-- BONUS SECTION -->
+    <!-- BONUS SECTION (SEM CONTADOR) -->
     <section class="bonus-section" id="oferta">
         <div class="container">
             <div class="bonus-header">
@@ -395,26 +395,7 @@
                 </a>
                 <p class="cta-note"><i class="fas fa-shield-alt"></i> Compra protegida pela garantia incondicional de 7 dias</p>
                 
-                <!-- CONTADOR REGRESSIVO (APENAS TIMER, SEM TEXTO "OFERTA TERMINA EM") -->
-                <div class="countdown">
-                    <p><i class="fas fa-clock"></i></p>
-                    <div id="countdown-timer">
-                        <div class="countdown-item">
-                            <span id="hours">02</span>
-                            <small>HORAS</small>
-                        </div>
-                        <div class="countdown-separator">:</div>
-                        <div class="countdown-item">
-                            <span id="minutes">45</span>
-                            <small>MINUTOS</small>
-                        </div>
-                        <div class="countdown-separator">:</div>
-                        <div class="countdown-item">
-                            <span id="seconds">30</span>
-                            <small>SEGUNDOS</small>
-                        </div>
-                    </div>
-                </div>
+                <!-- CONTADOR REMOVIDO DAQUI -->
             </div>
         </div>
     </section>
@@ -511,7 +492,7 @@
         </div>
     </section>
 
-    <!-- FINAL CTA -->
+    <!-- FINAL CTA (COM CONTADOR ÚNICO) -->
     <section class="final-cta-section">
         <div class="container">
             <div class="final-cta-box">
@@ -519,15 +500,18 @@
                 <p>Com a explosão da IA e novas oportunidades, quem se adaptar agora colherá os frutos nos próximos anos.</p>
                 <p><strong>Não seja espectador. Seja protagonista da sua própria história de sucesso.</strong></p>
                 
-                <!-- CONTADOR FINAL (APENAS TIMER) -->
+                <!-- CONTADOR ÚNICO COM LABELS AO LADO -->
                 <div class="final-countdown">
                     <p><i class="fas fa-clock"></i></p>
-                    <div id="final-countdown">
+                    <div id="final-countdown" class="countdown-inline">
                         <span class="final-time" id="final-hours">02</span>
+                        <span class="final-label">HORAS</span>
                         <span class="final-separator">:</span>
                         <span class="final-time" id="final-minutes">45</span>
+                        <span class="final-label">MINUTOS</span>
                         <span class="final-separator">:</span>
                         <span class="final-time" id="final-seconds">30</span>
+                        <span class="final-label">SEGUNDOS</span>
                     </div>
                 </div>
                 
