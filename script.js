@@ -82,42 +82,55 @@ function animateCounters() {
 document.addEventListener('DOMContentLoaded', animateCounters);
 
 // ============================================
-// FAQ ACCORDION - SIMPLES
+// FAQ ACCORDION - CORRIGIDO
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
-    const faqQuestions = document.querySelectorAll('.faq-question');
+    const faqItems = document.querySelectorAll('.faq-item');
     
-    faqQuestions.forEach(question => {
+    faqItems.forEach((item, index) => {
+        const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
+        const icon = question.querySelector('i');
+        
+        // Abre o primeiro por padrão
+        if (index === 0) {
+            answer.style.display = 'block';
+            if (icon) icon.style.transform = 'rotate(180deg)';
+        }
+        
         question.addEventListener('click', function() {
-            const answer = this.nextElementSibling;
-            const isActive = this.classList.contains('active');
-            
-            // Fecha todos
-            document.querySelectorAll('.faq-question').forEach(q => {
-                q.classList.remove('active');
-                q.nextElementSibling.style.display = 'none';
+            // Fecha todos os outros
+            faqItems.forEach(otherItem => {
+                if (otherItem !== item) {
+                    const otherAnswer = otherItem.querySelector('.faq-answer');
+                    const otherIcon = otherItem.querySelector('.faq-question i');
+                    otherAnswer.style.display = 'none';
+                    if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
+                }
             });
             
-            // Abre o atual se não estava ativo
-            if (!isActive) {
-                this.classList.add('active');
+            // Alterna o atual
+            if (answer.style.display === 'none' || answer.style.display === '') {
                 answer.style.display = 'block';
+                if (icon) icon.style.transform = 'rotate(180deg)';
+            } else {
+                answer.style.display = 'none';
+                if (icon) icon.style.transform = 'rotate(0deg)';
             }
         });
     });
-    
-    // Abre o primeiro por padrão
-    const firstQuestion = document.querySelector('.faq-question');
-    if (firstQuestion) {
-        firstQuestion.classList.add('active');
-        firstQuestion.nextElementSibling.style.display = 'block';
-    }
 });
 
 // ============================================
 // WHATSAPP TRACKING (OPCIONAL)
 // ============================================
 document.querySelectorAll('a[href*="whatsapp"]').forEach(link => {
+    link.addEventListener('click', function() {
+        if (typeof fbq !== 'undefined') fbq('track', 'Contact');
+    });
+});
+
+document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
     link.addEventListener('click', function() {
         if (typeof fbq !== 'undefined') fbq('track', 'Contact');
     });
