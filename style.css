@@ -2616,3 +2616,75 @@ p {
         padding: 8px 18px;
     }
 }
+/* ============================================
+   ESTILOS ADICIONAIS PARA A VERSÃO OTIMIZADA
+   ============================================ */
+
+.benefits-minimal {
+    margin: 30px 0 20px;
+}
+
+.benefit-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    color: var(--text-secondary);
+}
+
+.benefit-item i {
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+.simple-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--primary);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Ajustes no FAQ */
+.faq-item {
+    margin-bottom: 10px;
+}
+
+.faq-question {
+    transition: all 0.3s ease;
+}
+
+.faq-question.active {
+    border-radius: 12px 12px 0 0 !important;
+    border-bottom: none;
+}
+
+.faq-answer {
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+}
+
+/* Cards mais limpos */
+.ebook-card {
+    background: var(--bg-card);
+    border-radius: 20px;
+    padding: 25px;
+    transition: transform 0.3s ease;
+}
+
+.ebook-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Botão mais suave */
+.cta-button {
+    background: linear-gradient(135deg, var(--primary), #4f46e5);
+    border-radius: 60px;
+    font-weight: 600;
+    letter-spacing: normal;
+}
